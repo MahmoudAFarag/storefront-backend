@@ -1,0 +1,17 @@
+### PRODUCTS ROUTE
+
+### GET ALL PRODUCTS
+GET http://localhost:3000/products
+
+### GET SINGLE PRODUCT
+GET http://localhost:3000/products/1
+
+### CREATE NEW PRODUCT
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Sofa",
+    "price": 4000,
+    "category": "Living Room"
+}
