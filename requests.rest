@@ -15,3 +15,31 @@ Content-Type: application/json
     "price": 4000,
     "category": "Living Room"
 }
+
+### USERS ROUTE
+
+### GET ALL USERS
+GET http://localhost:3000/users
+
+### GET SINGLE USER
+GET http://localhost:3000/users/2
+
+### CREATE NEW USER
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "first_name": "David",
+    "last_name": "Lawrence",
+    "password": "secret"
+}
+
+### AUTHENTICATE USER
+POST http://localhost:3000/users/auth
+Content-Type: application/json
+
+{
+    "first_name": "David",
+    "last_name": "Lawrence",
+    "password": "secret"
+}

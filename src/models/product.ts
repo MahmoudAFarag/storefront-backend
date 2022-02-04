@@ -15,21 +15,21 @@ export class ProductStore {
       connection.release();
 
       return rows;
-    } catch (e) {
-      throw new Error(`Model: Cannot fetch products, ${e}`);
+    } catch (err) {
+      throw new Error(`Model: Cannot fetch products, ${err}`);
     }
   }
 
   async show(id: number): Promise<Product> {
     try {
       const connection = await pool.connect();
-      const sql = `SELECT * FROM products WHERE id=$1`;
+      const sql = `SELECT * FROM products WHERE id = $1`;
       const { rows } = await connection.query(sql, [id]);
       connection.release();
 
       return rows[0];
-    } catch (e) {
-      throw new Error(`Model: Cannot get product, ${e}`);
+    } catch (err) {
+      throw new Error(`Model: Cannot fetch product, ${err}`);
     }
   }
 
@@ -41,8 +41,8 @@ export class ProductStore {
       connection.release();
 
       return rows[0];
-    } catch (e) {
-      throw new Error(`Model: Cannot create product, ${e}`);
+    } catch (err) {
+      throw new Error(`Model: Cannot create product, ${err}`);
     }
   }
 }

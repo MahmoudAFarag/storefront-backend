@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import { productsRouter } from "./handlers/products";
+import { usersRouter } from "./handlers/users";
 
 const app = express();
 
@@ -12,5 +13,6 @@ app.get("/", (_req, res) => {
 });
 
 productsRouter(app);
+usersRouter(app);
 
 app.listen(3000, () => console.log(`Server started on port ${3000}`));

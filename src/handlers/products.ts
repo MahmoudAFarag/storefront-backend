@@ -1,31 +1,22 @@
 import { Request, Response, Application } from "express";
-import { ProductStore } from "../models/products";
+import { ProductStore } from "../models/product";
 
 const store = new ProductStore();
 
-const index = async (req: Request, res: Response) => {
-  try {
-    const products = await store.index();
-    res.json(products);
-  } catch (e) {
-    throw new Error(`Handler: Cannot fetch products, ${e}`);
-  }
+const index = async (_req: Request, res: Response) => {
+  const products = await store.index();
+  res.json(products);
 };
 
 const show = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
+  const product = await store.show(id);
 
-  try {
-    const product = await store.show(id);
-
-    if (!product) {
-      return res.send("No product matches the provided id");
-    }
-
-    res.json(product);
-  } catch (e) {
-    throw new Error(`Handler: Cannot fetch product, ${e}`);
+  if (!product) {
+    return res.send("No product matches the provided id");
   }
+
+  res.json(product);
 };
 
 const create = async (req: Request, res: Response) => {
@@ -35,12 +26,8 @@ const create = async (req: Request, res: Response) => {
     category: req.body.category,
   };
 
-  try {
-    const result = await store.create(product);
-    res.json(result);
-  } catch (e) {
-    throw new Error(`Handler: Cannot create product, ${e}`);
-  }
+  const newProduct = await store.create(product);
+  res.json(newProduct);
 };
 
 export const productsRouter = (app: Application) => {
