@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import { ordersRouter } from "./handlers/orders";
 import { productsRouter } from "./handlers/products";
 import { usersRouter } from "./handlers/users";
 
@@ -14,5 +15,6 @@ app.get("/", (_req, res) => {
 
 productsRouter(app);
 usersRouter(app);
+ordersRouter(app);
 
 app.listen(3000, () => console.log(`Server started on port ${3000}`));

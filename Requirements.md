@@ -18,7 +18,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 - Index [token required]
 - Show [token required]
-- Create [token required]
+- Create N[token required]
 
 #### Orders
 

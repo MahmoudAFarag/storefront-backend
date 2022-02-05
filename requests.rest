@@ -24,7 +24,7 @@ GET http://localhost:3000/products/category/Living%20Room
 
 ### GET ALL USERS
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJE1LY2NUaVRhQ2tXWlRNQnBSejJhcXVqSGw5VlBBY1U0VXJuLlpBWW1wRy5DZDExUjc0MHdLIiwiaWF0IjoxNjQ0MDgxMzExLCJleHAiOjE2NDQwODMxMTF9.KI9z3IK7X1fzGAauvUT_x6hPfDpQ4_LBsUJ77xCOAzQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJE1LY2NUaVRhQ2tXWlRNQnBSejJhcXVqSGw5VlBBY1U0VXJuLlpBWW1wRy5DZDExUjc0MHdLIiwiaWF0IjoxNjQ0MDgzMjQwLCJleHAiOjE2NDQwODUwNDB9.JcMjU_SW4N5qtBDMnTGz6q48x5ywssgpTVynYyDmer0
 
 ### GET SINGLE USER
 GET http://localhost:3000/users/2
@@ -58,3 +58,14 @@ Content-Type: application/json
     "last_name": "Lawrence",
     "password": "secret"
 }
+
+### ORDERS ROUTE
+
+### GET ORDER BY USER
+GET http://localhost:3000/orders/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJE1LY2NUaVRhQ2tXWlRNQnBSejJhcXVqSGw5VlBBY1U0VXJuLlpBWW1wRy5DZDExUjc0MHdLIiwiaWF0IjoxNjQ0MDgzMjQwLCJleHAiOjE2NDQwODUwNDB9.JcMjU_SW4N5qtBDMnTGz6q48x5ywssgpTVynYyDmer0
+
+### GET COMPLETED BY USER
+GET http://localhost:3000/orders/completed/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJE1LY2NUaVRhQ2tXWlRNQnBSejJhcXVqSGw5VlBBY1U0VXJuLlpBWW1wRy5DZDExUjc0MHdLIiwiaWF0IjoxNjQ0MDgzMjQwLCJleHAiOjE2NDQwODUwNDB9.JcMjU_SW4N5qtBDMnTGz6q48x5ywssgpTVynYyDmer0
+
