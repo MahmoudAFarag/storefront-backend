@@ -16,7 +16,7 @@ export class ProductStore {
 
       return rows;
     } catch (err) {
-      throw new Error(`Model: Cannot fetch products, ${err}`);
+      throw new Error(`Cannot fetch products, ${err}`);
     }
   }
 
@@ -29,7 +29,7 @@ export class ProductStore {
 
       return rows[0];
     } catch (err) {
-      throw new Error(`Model: Cannot fetch product, ${err}`);
+      throw new Error(`Cannot fetch product, ${err}`);
     }
   }
 
@@ -42,7 +42,20 @@ export class ProductStore {
 
       return rows[0];
     } catch (err) {
-      throw new Error(`Model: Cannot create product, ${err}`);
+      throw new Error(`Cannot create product, ${err}`);
+    }
+  }
+
+  async categorize(category: string): Promise<Product[]> {
+    try {
+      const connection = await pool.connect();
+      const sql = `SELECT * from products WHERE category = $1`;
+      const { rows } = await connection.query(sql, [category]);
+      connection.release();
+
+      return rows;
+    } catch (err) {
+      throw new Error(`Cannot find category: Error: ${err}`);
     }
   }
 }

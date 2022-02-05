@@ -11,6 +11,11 @@ const index = async (req: Request, res: Response) => {
 
 const show = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
+
+  if (isNaN(id)) {
+    return res.send("Please provide a valid number");
+  }
+
   const user = await store.show(id);
 
   if (!user) {

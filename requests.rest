@@ -11,10 +11,14 @@ POST http://localhost:3000/products
 Content-Type: application/json
 
 {
-    "name": "Sofa",
-    "price": 4000,
+    "name": "Sofra",
+    "price": 1500,
     "category": "Living Room"
 }
+
+### GET BY CATEGORY
+GET http://localhost:3000/products/category/Living%20Room
+
 
 ### USERS ROUTE
 
