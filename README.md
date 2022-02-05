@@ -81,7 +81,39 @@ npm run start
 
 ---
 
-# Routes Reference
+## Database Schema
+
+---
+
+```
+#### Product
+
+- id
+- name
+- price
+- category
+
+#### User
+
+- id
+- firstName
+- lastName
+- password
+
+#### Orders
+
+- id
+- id of each product in the order
+- quantity of each product in the order
+- user_id
+- status of order (active or complete)
+```
+
+---
+
+## Routes Reference
+
+---
 
 - All routes exist in requests.rest file. You can use it directly by installing the following VsCode extension: [Extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client). Or you can use a third-party tool like Postman
 
