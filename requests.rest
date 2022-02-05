@@ -24,6 +24,7 @@ GET http://localhost:3000/products/category/Living%20Room
 
 ### GET ALL USERS
 GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJE1LY2NUaVRhQ2tXWlRNQnBSejJhcXVqSGw5VlBBY1U0VXJuLlpBWW1wRy5DZDExUjc0MHdLIiwiaWF0IjoxNjQ0MDgxMzExLCJleHAiOjE2NDQwODMxMTF9.KI9z3IK7X1fzGAauvUT_x6hPfDpQ4_LBsUJ77xCOAzQ
 
 ### GET SINGLE USER
 GET http://localhost:3000/users/2
@@ -36,6 +37,16 @@ Content-Type: application/json
     "first_name": "David",
     "last_name": "Lawrence",
     "password": "secret"
+}
+
+### CREATE NEW USER 2
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "first_name": "Helen",
+    "last_name": "Pierce",
+    "password": "nothere"
 }
 
 ### AUTHENTICATE USER

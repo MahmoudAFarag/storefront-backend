@@ -1,4 +1,5 @@
 import { Request, Response, Application } from "express";
+import verifyToken from "../middleware/auth";
 import { ProductStore } from "../models/product";
 
 const store = new ProductStore();
@@ -49,5 +50,5 @@ export const productsRouter = (app: Application) => {
   app.get("/products", index);
   app.get("/products/:id", show);
   app.get("/products/category/:category", showByCategory);
-  app.post("/products", create);
+  app.post("/products", verifyToken, create);
 };
