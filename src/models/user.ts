@@ -54,7 +54,7 @@ export class UserStore {
       const connection = await pool.connect();
       const sql = `SELECT password FROM users WHERE first_name = $1 AND last_name = $2`;
       const { rows } = await connection.query(sql, [user.first_name, user.last_name]);
-      const foundUserPass = rows[0].password;
+      const foundUserPass = rows[0]?.password;
       connection.release();
 
       if (foundUserPass) {

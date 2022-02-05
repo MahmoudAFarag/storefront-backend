@@ -67,6 +67,6 @@ const authenticate = async (req: Request, res: Response) => {
 export const usersRouter = (app: Application) => {
   app.get("/users", verifyToken, index);
   app.get("/users/:id", verifyToken, show);
-  app.post("/users", verifyToken, create);
+  app.post("/users", create);
   app.post("/users/auth", authenticate);
 };
