@@ -1,10 +1,14 @@
 import { Pool } from "pg";
 
+const { POSTGRES_HOST, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB, POSTGRES_DB_TEST, ENV } = process.env;
+
+console.log(`Launching ${ENV} environment`);
+
 const pool = new Pool({
-  host: process.env.POSTGRES_HOST,
-  user: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  database: process.env.POSTGRES_DB,
+  host: POSTGRES_HOST,
+  user: POSTGRES_USER,
+  password: POSTGRES_PASSWORD,
+  database: ENV === "test" ? POSTGRES_DB_TEST : POSTGRES_DB,
   port: 5432,
 });
 

@@ -9,6 +9,7 @@ GET http://localhost:3000/products/1
 ### CREATE NEW PRODUCT
 POST http://localhost:3000/products
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJEJtTXNyc0RwUkNRNU9xbHN4ZEpLT2Vaa24zLlI1MWdaNEZWN1JZUmpHeXhnZFFZWUswY0tPIiwiaWF0IjoxNjQ0MjUwNTk2LCJleHAiOjE2NDQyNTIzOTZ9.tNfATOEYeBjsrUlguJgbRKO6kHT1IctO4dQVIDnpU94
 
 {
     "name": "Sofra",
@@ -24,7 +25,7 @@ GET http://localhost:3000/products/category/Living%20Room
 
 ### GET ALL USERS
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJE1LY2NUaVRhQ2tXWlRNQnBSejJhcXVqSGw5VlBBY1U0VXJuLlpBWW1wRy5DZDExUjc0MHdLIiwiaWF0IjoxNjQ0MDgzMjQwLCJleHAiOjE2NDQwODUwNDB9.JcMjU_SW4N5qtBDMnTGz6q48x5ywssgpTVynYyDmer0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJEJtTXNyc0RwUkNRNU9xbHN4ZEpLT2Vaa24zLlI1MWdaNEZWN1JZUmpHeXhnZFFZWUswY0tPIiwiaWF0IjoxNjQ0MjUwNTk2LCJleHAiOjE2NDQyNTIzOTZ9.tNfATOEYeBjsrUlguJgbRKO6kHT1IctO4dQVIDnpU94
 
 ### GET SINGLE USER
 GET http://localhost:3000/users/2
@@ -63,7 +64,7 @@ Content-Type: application/json
 
 ### GET ORDER BY USER
 GET http://localhost:3000/orders/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJHBWVWFqeW1VNnhtUC9WaGdvNVM4bWVldnouWGoyRW1pbnBidWNuWkVsSTFwTlpRNXVXdXJhIiwiaWF0IjoxNjQ0MDg2ODExLCJleHAiOjE2NDQwODg2MTF9.gEX_hvAgGDiOIxyDeYUYwnjxmRB-FsNvh5EbV9JQZdY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJHBWVWFqeW1VNnhtUC9WaGdvNVM4bWVldnouWGoyRW1pbnBidWNuWkVsSTFwTlpRNXVXdXJhIiwiaWF0IjoxNjQ0MjM2MTE3LCJleHAiOjE2NDQyMzc5MTd9.8J479XuUl180BXPW7rmMAv9jhM2gLcxTfFGZ3xmm2Sg
 
 ### GET COMPLETED BY USER
 GET http://localhost:3000/orders/completed/3

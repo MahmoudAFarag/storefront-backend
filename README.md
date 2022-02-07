@@ -4,6 +4,13 @@ A backend API built using express and typescript that can bootstrap an e-commerc
 
 ---
 
+## Ports and Hosts
+
+- Server : **3000**
+- Database : **5432**
+
+---
+
 ## Installation
 
 ---
