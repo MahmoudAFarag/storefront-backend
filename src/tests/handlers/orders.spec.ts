@@ -21,7 +21,7 @@ describe('Orders Router Endpoint', () => {
 
     token = user.text.replaceAll('"', '');
 
-    const product = await request
+    await request
       .post('/products')
       .set('Authorization', 'Bearer ' + token)
       .set('Content-Type', 'application/json')
