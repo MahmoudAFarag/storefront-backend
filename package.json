@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "build": "rimraf ./dist && tsc",
-    "test": "db-migrate --env test up && npm run build && cross-env ENV=test npx jasmine && npx db-migrate db:drop test",
+    "test": "db-migrate --env test up && npm run build && cross-env ENV=test npx jasmine && npx db-migrate --env test reset",
     "migrate": "npx db-migrate up",
     "start": "node dist/server.js"
   },

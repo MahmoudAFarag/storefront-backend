@@ -11,20 +11,21 @@ interface User {
 }
 
 describe('Users Router Endpoint', () => {
+  let currentUser: User;
+
+  let token = '';
+
   const data: User = {
     first_name: 'David',
     last_name: 'Lawrence',
     password: 'secret',
   };
 
-  let currentUser: User;
-
-  let token = '';
-
   it('expects app to be defined', () => {
     expect(app).toBeDefined();
   });
 
+  // POST /users ROUTE
   it('should create a new user', async () => {
     const user = await request.post('/users').set('Content-Type', 'application/json').send(data);
 
@@ -34,6 +35,7 @@ describe('Users Router Endpoint', () => {
     expect(user.text).toContain('eyJhbGciOiJIUzI');
   });
 
+  // GET /users ROUTE
   it('should list all users', async () => {
     const users = await request.get('/users').set('Authorization', 'Bearer ' + token);
 
@@ -42,6 +44,7 @@ describe('Users Router Endpoint', () => {
     expect(users.body.filter((user: Object) => user === data)).toBeTruthy();
   });
 
+  // GET /users/:id ROUTE
   it('should show user with provided id', async () => {
     const user = await request.get(`/users/${currentUser.id}`).set('Authorization', 'Bearer ' + token);
 
@@ -51,6 +54,7 @@ describe('Users Router Endpoint', () => {
     expect(user.body).toEqual(currentUser);
   });
 
+  // POST /users/auth ROUTE
   it('should return an authentication token if valid user', async () => {
     const token = await request.post('/users/auth').set('Content-Type', 'application/json').send(data);
 

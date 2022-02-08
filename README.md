@@ -40,6 +40,7 @@ POSTGRES_PASSWORD=12345
 BCRYPT_PASSWORD=easypass
 SALT_ROUNDS=10
 TOKEN_SECRET=05df9944691536e6f580a0aa9a20760dad4317c46414c9badc74085f54312626bfd12a9d22b24b8e4e0ca77fecb33c8d1b75c71d86fd7bebf832e5d8faec9118
+ENV=dev
 ```
 
 4. Run a postgres database using docker
@@ -212,3 +213,17 @@ Authorization: Bearer [TOKEN] // get token by creating a user
 GET http://localhost:3000/orders/completed/3
 Authorization: Bearer [TOKEN] // get token by creating a user
 ```
+
+---
+
+## Testing
+
+---
+
+To run tests, run the following command:
+
+```
+npm run test
+```
+
+This will change the environment to test and run the tests according to each handler on the testing database

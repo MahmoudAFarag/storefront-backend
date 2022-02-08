@@ -1,13 +1,27 @@
-import pool from "../db";
+import pool from '../db';
 
 interface Order {
   quantity: number;
   product_id: number;
   user_id: number;
-  status: string;
+  status?: string;
 }
 
 export class OrderStore {
+  async createOrder(order: Order): Promise<Order> {
+    const status = order.status ?? 'active';
+    try {
+      const connection = await pool.connect();
+      const sql = `INSERT INTO orders (quantity, product_id, user_id, status) VALUES ($1, $2, $3, $4) RETURNING *`;
+      const { rows } = await connection.query(sql, [order.quantity, order.product_id, order.user_id, status]);
+      connection.release();
+
+      return rows[0];
+    } catch (err) {
+      throw new Error(`Cannot create order, Error: ${err}`);
+    }
+  }
+
   async getUserOrder(user_id: number): Promise<Order[]> {
     try {
       const connection = await pool.connect();
