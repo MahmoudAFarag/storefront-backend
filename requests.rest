@@ -25,7 +25,7 @@ GET http://localhost:3000/products/category/Living%20Room
 
 ### GET ALL USERS
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJEJtTXNyc0RwUkNRNU9xbHN4ZEpLT2Vaa24zLlI1MWdaNEZWN1JZUmpHeXhnZFFZWUswY0tPIiwiaWF0IjoxNjQ0MjUwNTk2LCJleHAiOjE2NDQyNTIzOTZ9.tNfATOEYeBjsrUlguJgbRKO6kHT1IctO4dQVIDnpU94
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJEJ2eU5aU0oxUXVJV3EuWjVKaG41bGU3L0RYUXFLLloxZ09uS01selVJLkowOFZtWVlNMXM2IiwiaWF0IjoxNjQ0MzE2NTQzLCJleHAiOjE2NDQzMTgzNDN9.yWjdMlZz3GJbSrfk9f3NDi3YVbX5fndoo2X2G_Rr1wE
 
 ### GET SINGLE USER
 GET http://localhost:3000/users/2

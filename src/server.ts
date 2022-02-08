@@ -4,7 +4,7 @@ import { ordersRouter } from "./handlers/orders";
 import { productsRouter } from "./handlers/products";
 import { usersRouter } from "./handlers/users";
 
-const app = express();
+export const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
