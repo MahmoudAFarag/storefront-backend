@@ -89,130 +89,11 @@ npm run start
 
 ---
 
-## Database Schema
-
----
-
-```
-#### Product
-
-- id
-- name
-- price
-- category
-
-#### User
-
-- id
-- firstName
-- lastName
-- password
-
-#### Orders
-
-- id
-- id of each product in the order
-- quantity of each product in the order
-- user_id
-- status of order (active or complete)
-```
-
----
-
 ## Routes Reference
 
 ---
 
-- All routes exist in requests.rest file. You can use it directly by installing the following VsCode extension: [Extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client). Or you can use a third-party tool like Postman
-
-### 1. Products Routes
-
-```
-// GET ALL PRODUCTS
-
-GET http://localhost:3000/products
-
-// GET SINGLE PRODUCT
-
-GET http://localhost:3000/products/1
-
-// CREATE NEW PRODUCT
-
-POST http://localhost:3000/products
-Authorization: Bearer [TOKEN] // get token by creating a user
-Content-Type: application/json
-
-{
-    "name": "Sofsa",
-    "price": 1500,
-    "category": "Living Room"
-}
-
-// GET PRODUCT BY CATEGORY
-
-GET http://localhost:3000/products/category/Living%20Room
-```
-
-### 2. Users Routes
-
-```
-// GET ALL USERS
-
-GET http://localhost:3000/users
-Authorization: Bearer [TOKEN] // get token by creating a user
-
-// GET SINGLE USER
-
-GET http://localhost:3000/users/2
-Authorization: Bearer [TOKEN] // get token by creating a user
-
-// CREATE NEW USER
-
-POST http://localhost:3000/users
-Content-Type: application/json
-
-{
-    "first_name": "David",
-    "last_name": "Lawrence",
-    "password": "secret"
-}
-
-// CREATE NEW USER 2
-
-POST http://localhost:3000/users
-Content-Type: application/json
-
-{
-    "first_name": "Helen",
-    "last_name": "Pierce",
-    "password": "nothere"
-}
-
-// AUTHENTICATE USER
-
-POST http://localhost:3000/users/auth
-Content-Type: application/json
-
-{
-    "first_name": "David",
-    "last_name": "Lawrence",
-    "password": "secret"
-}
-```
-
-### 3. Orders Routes
-
-```
-// GET ORDER BY USER
-
-GET http://localhost:3000/orders/1
-Authorization: Bearer [TOKEN] // get token by creating a user
-
-// GET COMPLETED BY USER
-
-GET http://localhost:3000/orders/completed/3
-Authorization: Bearer [TOKEN] // get token by creating a user
-```
+- All routes exist in requests.rest file and Requirements.md file. You can use it directly by installing the following VsCode extension: [Extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client). Or you can use a third-party tool like Postman
 
 ---
 
@@ -226,4 +107,4 @@ To run tests, run the following command:
 npm run test
 ```
 
-This will change the environment to test and run the tests according to each handler on the testing database
+This will change the environment to "test" and run the tests according to each handler on the testing database

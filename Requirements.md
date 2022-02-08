@@ -6,24 +6,111 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## API Endpoints
 
-#### Products
+### Products:
 
-- Index
-- Show
-- Create [token required]
-- [OPTIONAL] Top 5 most popular products
-- [OPTIONAL] Products by category (args: product category)
+---
 
-#### Users
+```
+// GET ALL PRODUCTS
 
-- Index [token required]
-- Show [token required]
-- Create N[token required]
+GET http://localhost:3000/products
+
+// GET SINGLE PRODUCT
+
+GET http://localhost:3000/products/1
+
+// CREATE NEW PRODUCT
+
+POST http://localhost:3000/products
+Authorization: Bearer [TOKEN] // get token by creating a user
+Content-Type: application/json
+
+{
+    "name": "Sofsa",
+    "price": 1500,
+    "category": "Living Room"
+}
+
+// GET PRODUCT BY CATEGORY
+
+GET http://localhost:3000/products/category/Living%20Room
+```
+
+### Users:
+
+---
+
+```
+// GET ALL USERS
+
+GET http://localhost:3000/users
+Authorization: Bearer [TOKEN] // get token by creating a user
+
+// GET SINGLE USER
+
+GET http://localhost:3000/users/2
+Authorization: Bearer [TOKEN] // get token by creating a user
+
+// CREATE NEW USER
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "first_name": "David",
+    "last_name": "Lawrence",
+    "password": "secret"
+}
+
+// CREATE NEW USER 2
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "first_name": "Helen",
+    "last_name": "Pierce",
+    "password": "nothere"
+}
+
+// AUTHENTICATE USER
+
+POST http://localhost:3000/users/auth
+Content-Type: application/json
+
+{
+    "first_name": "David",
+    "last_name": "Lawrence",
+    "password": "secret"
+}
+```
 
 #### Orders
 
-- Current Order by user (args: user id)[token required]
-- [OPTIONAL] Completed Orders by user (args: user id)[token required]
+```
+// CREATE NEW ORDER
+
+POST http://localhost:3000/orders
+Content-Type: application/json
+Authorization: Bearer [TOKEN] // get token by creating a user
+
+{
+    "quantity": 4,
+    "product_id": 1,
+    "user_id": 1,
+    "status": "complete"
+}
+
+// GET ORDER BY USER
+
+GET http://localhost:3000/orders/1
+Authorization: Bearer [TOKEN] // get token by creating a user
+
+// GET COMPLETED BY USER
+
+GET http://localhost:3000/orders/completed/3
+Authorization: Bearer [TOKEN] // get token by creating a user
+```
 
 ## Data Shapes
 
@@ -48,3 +135,27 @@ These are the notes from a meeting with the frontend developer that describe wha
 - quantity of each product in the order
 - user_id
 - status of order (active or complete)
+
+## Data tables Schema
+
+### Orders
+
+    id integer PRIMARY KEY generated always as identity,
+    quantity integer NOT NULL,
+    product_id integer REFERENCES products(id) ON DELETE CASCADE,
+    user_id integer REFERENCES users(id) ON DELETE CASCADE,
+    status VARCHAR(10) DEFAULT 'active'
+
+### Products
+
+    id integer PRIMARY KEY generated always as identity,
+    name VARCHAR(100) NOT NULL,
+    price integer NOT NULL,
+    category VARCHAR(50) NOT NULL
+
+### Users
+
+    id integer PRIMARY KEY generated always as identity,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL
