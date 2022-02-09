@@ -1,7 +1,6 @@
 import pool from '../db';
 
 interface Order {
-  quantity: number;
   user_id: number;
   status?: string;
 }
