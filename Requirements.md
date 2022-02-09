@@ -95,8 +95,6 @@ Content-Type: application/json
 Authorization: Bearer [TOKEN] // get token by creating a user
 
 {
-    "quantity": 4,
-    "product_id": 1,
     "user_id": 1,
     "status": "complete"
 }
@@ -131,18 +129,21 @@ Authorization: Bearer [TOKEN] // get token by creating a user
 #### Orders
 
 - id
-- id of each product in the order
-- quantity of each product in the order
 - user_id
 - status of order (active or complete)
+
+#### Order Products
+
+- id
+- quantity
+- user_id
+- product_id
 
 ## Data tables Schema
 
 ### Orders
 
     id integer PRIMARY KEY generated always as identity,
-    quantity integer NOT NULL,
-    product_id integer REFERENCES products(id) ON DELETE CASCADE,
     user_id integer REFERENCES users(id) ON DELETE CASCADE,
     status VARCHAR(10) DEFAULT 'active'
 
@@ -159,3 +160,10 @@ Authorization: Bearer [TOKEN] // get token by creating a user
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL
+
+### Order_Products
+
+    id INTEGER PRIMARY KEY generated always as identity,
+    quantity INTEGER NOT NULL,
+    product_id bigint REFERENCES products(id) ON DELETE CASCADE,
+    user_id bigint REFERENCES users(id) ON DELETE CASCADE
