@@ -5,8 +5,6 @@ const request = supertest(app);
 
 describe('Orders Router Endpoint', () => {
   const data = {
-    quantity: 4,
-    product_id: 1,
     user_id: 1,
   };
 
@@ -20,16 +18,6 @@ describe('Orders Router Endpoint', () => {
     });
 
     token = user.text.replaceAll('"', '');
-
-    await request
-      .post('/products')
-      .set('Authorization', 'Bearer ' + token)
-      .set('Content-Type', 'application/json')
-      .send({
-        name: 'Sofra',
-        price: 1500,
-        category: 'Living Room',
-      });
   });
 
   it('should create a new order', async () => {
@@ -58,8 +46,6 @@ describe('Orders Router Endpoint', () => {
       .set('Content-Type', 'application/json')
       .set('Authorization', 'Bearer ' + token)
       .send({
-        quantity: 4,
-        product_id: 1,
         user_id: 1,
         status: 'complete',
       });
