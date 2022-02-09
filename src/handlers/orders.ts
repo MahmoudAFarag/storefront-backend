@@ -7,7 +7,6 @@ const store = new OrderStore();
 const createOrder = async (req: Request, res: Response) => {
   const newOrder = {
     quantity: req.body.quantity,
-    product_id: req.body.product_id,
     user_id: req.body.user_id,
     status: req.body.status ?? 'active',
   };

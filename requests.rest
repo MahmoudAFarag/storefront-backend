@@ -65,13 +65,10 @@ Content-Type: application/json
 ### CREATE NEW ORDER
 POST http://localhost:3000/orders
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiJDJiJDEwJEJ2eU5aU0oxUXVJV3EuWjVKaG41bGU3L0RYUXFLLloxZ09uS01selVJLkowOFZtWVlNMXM2IiwiaWF0IjoxNjQ0MzU2OTA5LCJleHAiOjE2NDQzNTg3MDl9.P2KjTVzs_-5nNNneQElkE3RO3DweNfy3Vb4T8InldOs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdF9uYW1lIjoiRGF2aWQiLCJsYXN0X25hbWUiOiJMYXdyZW5jZSIsInBhc3N3b3JkIjoiJDJiJDEwJDhUOVpHai9PazVkTnpwb0tJT0xKbXVSVWwwekJHcnMzOFphVFNEbWtJUmFUZ05YRHBHb2x5In0sImlhdCI6MTY0NDQwMDMzNywiZXhwIjoxNjQ0NDAyMTM3fQ.FFEO4YGXHbc1wSfM8DLTO_X-vV2yDMa5CeviPKQ2Dks
 
 {
-    "quantity": 4,
-    "product_id": 1,
-    "user_id": 1,
-    "status": "complete"
+    "user_id": 1
 }
 
 ### GET ORDER BY USER
