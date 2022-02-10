@@ -7,13 +7,17 @@ describe('Products Router Endpoint', () => {
   let token = '';
 
   beforeAll(async () => {
-    const user = await request.post('/users').set('Content-Type', 'application/json').send({
-      first_name: 'Jennifer',
-      last_name: 'Hudson',
-      password: 'noteasy',
-    });
+    try {
+      const user = await request.post('/users').set('Content-Type', 'application/json').send({
+        first_name: 'Jennifer',
+        last_name: 'Hudson',
+        password: 'noteasy',
+      });
 
-    token = user.text.replaceAll('"', '');
+      token = user.text.replaceAll('"', '');
+    } catch (err) {
+      throw new Error(`Products Before All: Cannot create user, Error: ${err}`);
+    }
   });
 
   it('should create a new product', async () => {
