@@ -1,30 +1,38 @@
-import { Request, Response, Application } from "express";
-import jwt, { Secret } from "jsonwebtoken";
-import { UserStore } from "../models/user";
-import verifyToken from "../middleware/auth";
+import { Request, Response, Application } from 'express';
+import jwt, { Secret } from 'jsonwebtoken';
+import { UserStore } from '../models/user';
+import verifyToken from '../middleware/auth';
 
 const store = new UserStore();
 
-const index = async (req: Request, res: Response) => {
-  const users = await store.index();
+const index = async (_req: Request, res: Response) => {
+  try {
+    const users = await store.index();
 
-  res.json(users);
+    res.json(users);
+  } catch (err) {
+    throw new Error(`Handler: Cannot fetch users: Error: ${err}`);
+  }
 };
 
 const show = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
 
   if (isNaN(id)) {
-    return res.send("Please provide a valid number");
+    return res.send('Please provide a valid number');
   }
 
-  const user = await store.show(id);
+  try {
+    const user = await store.show(id);
 
-  if (!user) {
-    return res.send("No user matches the provided id");
+    if (!user) {
+      return res.send('No user matches the provided id');
+    }
+
+    res.json(user);
+  } catch (err) {
+    throw new Error(`Handler: Cannot fetch user, Error: ${err}`);
   }
-
-  res.json(user);
 };
 
 const create = async (req: Request, res: Response) => {
@@ -35,12 +43,16 @@ const create = async (req: Request, res: Response) => {
   };
   const tokenSecret = process.env.TOKEN_SECRET as Secret;
 
-  const newUser = await store.create(user);
-  const token = jwt.sign({ user: newUser }, tokenSecret, {
-    expiresIn: "1800s",
-  });
+  try {
+    const newUser = await store.create(user);
+    const token = jwt.sign({ user: newUser }, tokenSecret, {
+      expiresIn: '1800s',
+    });
 
-  res.json(token);
+    res.json(token);
+  } catch (err) {
+    throw new Error(`Handler: Cannot create user, Error: ${err}`);
+  }
 };
 
 const authenticate = async (req: Request, res: Response) => {
@@ -51,22 +63,26 @@ const authenticate = async (req: Request, res: Response) => {
   };
   const tokenSecret = process.env.TOKEN_SECRET as Secret;
 
-  const foundUser = await store.authenticate(user);
+  try {
+    const foundUser = await store.authenticate(user);
 
-  if (!foundUser) {
-    return res.send("Wrong credintials");
+    if (!foundUser) {
+      return res.send('Wrong credintials');
+    }
+
+    const token = jwt.sign({ user: foundUser }, tokenSecret, {
+      expiresIn: '1800s',
+    });
+
+    res.json(token);
+  } catch (err) {
+    throw new Error(`Handler: Cannot authenticate user, Error: ${err}`);
   }
-
-  const token = jwt.sign({ user: foundUser }, tokenSecret, {
-    expiresIn: "1800s",
-  });
-
-  res.json(token);
 };
 
 export const usersRouter = (app: Application) => {
-  app.get("/users", verifyToken, index);
-  app.get("/users/:id", verifyToken, show);
-  app.post("/users", create);
-  app.post("/users/auth", authenticate);
+  app.get('/users', verifyToken, index);
+  app.get('/users/:id', verifyToken, show);
+  app.post('/users', create);
+  app.post('/users/auth', authenticate);
 };

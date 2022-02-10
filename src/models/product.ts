@@ -1,4 +1,4 @@
-import pool from "../db";
+import pool from '../db';
 
 interface Product {
   name: string;
@@ -16,7 +16,7 @@ export class ProductStore {
 
       return rows;
     } catch (err) {
-      throw new Error(`Cannot fetch products, ${err}`);
+      throw new Error(`Model: Cannot fetch products, Error: ${err}`);
     }
   }
 
@@ -29,7 +29,7 @@ export class ProductStore {
 
       return rows[0];
     } catch (err) {
-      throw new Error(`Cannot fetch product, ${err}`);
+      throw new Error(`Model: Cannot fetch product, Error: ${err}`);
     }
   }
 
@@ -42,7 +42,7 @@ export class ProductStore {
 
       return rows[0];
     } catch (err) {
-      throw new Error(`Cannot create product, ${err}`);
+      throw new Error(`Model: Cannot create product, Error: ${err}`);
     }
   }
 
@@ -55,7 +55,7 @@ export class ProductStore {
 
       return rows;
     } catch (err) {
-      throw new Error(`Cannot find category: Error: ${err}`);
+      throw new Error(`Model: Cannot find product category: Error: ${err}`);
     }
   }
 }

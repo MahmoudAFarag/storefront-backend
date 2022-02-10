@@ -16,7 +16,7 @@ export class OrderStore {
 
       return rows[0];
     } catch (err) {
-      throw new Error(`Cannot create order, Error: ${err}`);
+      throw new Error(`Model: Cannot create order, Error: ${err}`);
     }
   }
 
@@ -29,7 +29,7 @@ export class OrderStore {
 
       return rows;
     } catch (err) {
-      throw new Error(`Cannot fetch orders, Error: ${err}`);
+      throw new Error(`Model: Cannot fetch orders, Error: ${err}`);
     }
   }
 
@@ -42,7 +42,7 @@ export class OrderStore {
 
       return rows;
     } catch (err) {
-      throw new Error(`Cannot fetch orders, Error: ${err}`);
+      throw new Error(`Model: Cannot fetch orders, Error: ${err}`);
     }
   }
 }

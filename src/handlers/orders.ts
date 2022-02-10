@@ -11,31 +11,44 @@ const createOrder = async (req: Request, res: Response) => {
     status: req.body.status ?? 'active',
   };
 
-  const order = await store.createOrder(newOrder);
-
-  res.json(order);
+  try {
+    const order = await store.createOrder(newOrder);
+    res.json(order);
+  } catch (err) {
+    throw new Error(`Handler: Cannot create order: ${err}`);
+  }
 };
 
 const getUserOrder = async (req: Request, res: Response) => {
   const user_id = parseInt(req.params.user_id);
-  const userOrders = await store.getUserOrder(user_id);
 
-  if (userOrders.length === 0) {
-    return res.status(404).send('No orders for the selected user');
+  try {
+    const userOrders = await store.getUserOrder(user_id);
+
+    if (userOrders.length === 0) {
+      return res.status(404).send('No orders for the selected user');
+    }
+
+    res.json(userOrders);
+  } catch (err) {
+    throw new Error(`Handler: Cannot fetch orders: ${err}`);
   }
-
-  res.json(userOrders);
 };
 
 const getCompletedOrders = async (req: Request, res: Response) => {
   const user_id = parseInt(req.params.user_id);
-  const userCompletedOrders = await store.getCompletedOrders(user_id);
 
-  if (userCompletedOrders.length === 0) {
-    return res.status(404).send('No completed orders for the selected user');
+  try {
+    const userCompletedOrders = await store.getCompletedOrders(user_id);
+
+    if (userCompletedOrders.length === 0) {
+      return res.status(404).send('No completed orders for the selected user');
+    }
+
+    res.json(userCompletedOrders);
+  } catch (err) {
+    throw new Error(`Handler: Cannot fetch orders: ${err}`);
   }
-
-  res.json(userCompletedOrders);
 };
 
 export const ordersRouter = (app: Application) => {

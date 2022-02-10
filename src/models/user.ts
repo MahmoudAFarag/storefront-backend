@@ -1,5 +1,5 @@
-import bcrypt from "bcrypt";
-import pool from "../db";
+import bcrypt from 'bcrypt';
+import pool from '../db';
 
 interface User {
   first_name: string;
@@ -17,7 +17,7 @@ export class UserStore {
 
       return rows;
     } catch (err) {
-      throw new Error(`Cannot fetch users, Error: ${err}`);
+      throw new Error(`Model: Cannot fetch users, Error: ${err}`);
     }
   }
 
@@ -30,7 +30,7 @@ export class UserStore {
 
       return rows[0];
     } catch (err) {
-      throw new Error(`Cannot fetch user, Error: ${err}`);
+      throw new Error(`Model: Cannot fetch user, Error: ${err}`);
     }
   }
 
@@ -45,7 +45,7 @@ export class UserStore {
 
       return rows[0];
     } catch (err) {
-      throw new Error(`Cannot create user, Error: ${err}`);
+      throw new Error(`Model: Cannot create user, Error: ${err}`);
     }
   }
 
@@ -67,7 +67,7 @@ export class UserStore {
 
       return null;
     } catch (err) {
-      throw new Error(`Cannot authenticate, Error: ${err}`);
+      throw new Error(`Model: Cannot authenticate, Error: ${err}`);
     }
   }
 }
